@@ -1,0 +1,59 @@
+<header class="header" >
+
+    <div class="header__inner">
+      <a class="header__text" [routerLink]="['/']">G-Blog</a>
+      <ul class="nav" *ngIf="auth.isAuthenticated()">
+        <li routerLinkActive="active" class="nav__link">
+          <a [routerLink]="['/admin', 'dashboard']" class="nav__link">General</a>
+        </li>
+        <li routerLinkActive="active" class="nav__link">
+          <a [routerLink]="['/admin', 'create']" class="nav__link">Create</a>
+        </li >
+        <li class="nav__link" >
+          <a href="#" (click)="logout($event)" class="nav__link">Exit</a>
+        </li>
+      </ul>
+    </div>
+</header>
+<div *ngIf="posts.length; else loading">
+  <div class="form-control">
+    <input type="search" placeholder="Find Post..." [(ngModel)]="searchStr" class="inp">
+  </div>
+
+ <table class="tables table-sortable"  >
+    <thead>
+      <tr>
+        <th >id</th>
+        <th>Author</th>
+        <th >Post-Name</th>
+        <th >Date</th>
+        <th></th>
+      </tr>
+      </thead>
+    <tbody >
+      <tr *ngFor="let post of posts | searchPosts:searchStr:searchfield; let idx = index" class="active-row">
+        <td>{{ idx + 1 }}</td>
+        <td>{{ post.author }}</td>
+        <td>{{ post.title }}</td>
+        <td>{{ post.date | date:'medium':null:'en' }}</td>
+        <td>
+          <button
+            class="btn btn&#45;&#45;red"
+            [routerLink]="['/admin', 'post', post.id, 'edit']"
+          >
+            EDIT
+          </button>
+          <a class="btn2 btn2&#45;&#45;black" (click)="remove(post.id)">REMOVE</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+<ng-template #loading >
+  <div class="loading">
+    <div></div>
+  </div>
+</ng-template>

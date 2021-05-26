@@ -1,0 +1,27 @@
+<!--
+<div class="card">
+  <div class="card-header ">
+    <h2>{{ post.title }}</h2>
+
+    <small>{{ post.date | date:'dd.MM.yyyy' }}</small>
+  </div>
+
+  <div>
+    <small>{{ post.author }}</small>
+  </div>
+
+</div>
+-->
+<div class="container">
+  <div class="features">
+    <div class="features__item">
+      <div class="features__title">{{post.title}}</div>
+      <div class="features__text">{{post.author}}</div>
+      <div>{{post.date | date:'dd.MM.yyyy'}}</div>
+      <button
+              [routerLink]="['/post', post.id]"
+              class="btn btn-dark"
+      >Открыть</button>
+    </div>
+  </div>
+</div>

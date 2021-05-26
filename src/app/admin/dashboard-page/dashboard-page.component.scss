@@ -1,0 +1,261 @@
+.open {
+  margin-right: 10px;
+}
+.loading>div {
+  height: 100px;
+  width: 100px;
+  border: 15px solid #45474b;
+  border-top-color: #2a88e6;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  animation: spin 1.5s infinite linear;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,700&display=swap');
+body {
+  font-family: Raleway,sans-serif;
+  font-size: 10px;
+  color: aliceblue;
+  margin: 0;
+}
+*,
+*::after,
+*::before{
+  box-sizing: border-box
+}
+h1,h2,h3,h4,h5 {
+  margin: 0;
+}
+/*HEADER
+**************/
+.header {
+  width: 100%;
+  max-width: 2200px;
+  margin: 0 auto;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+}
+.container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:  35px;
+  border-bottom: 1px grey solid;
+  background-color: #2b2e4a;
+}
+.nav {
+
+  display: flex;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.nav__link {
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+  margin-left: 50px;
+  opacity: 0.70;
+  transition: opacity 0.2s,font-size 0.3s,color 0.3s;
+
+}
+.nav__link:hover {
+  opacity: 1;
+}
+
+.nav__link:first-child {
+  margin: 0
+}
+.intro__inner {
+  text-align: center;
+  width: 100%;
+  min-width: 970px;
+  margin: 0 auto;
+}
+.inner__title {
+  margin: 0 0 30px;
+  text-transform: uppercase;
+  font-size: 65px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #cccccc;
+  font-family: 'Raleway',sans-serif;
+
+}
+.header__text {
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #cccccc;
+  font-family: 'Raleway',sans-serif;
+}
+/*HEADER
+**************/
+li.active a {
+  opacity: 1;
+  color: #ff0000;
+  font-size: 15px;
+}
+/*HEADER
+**************/
+.inp {
+  position: relative;
+  width: 300px;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  border: 1px black solid;
+  border-radius: 0 10px 10px 0;
+  outline: none;
+  box-shadow: none;
+  margin: 8px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+/*HEADER
+**************/
+.btn {
+  font-size: 15px;
+  display: inline-block;
+  vertical-align: top;
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: aliceblue;
+  text-transform: uppercase;
+
+}
+.btn--red {
+  background-color:#2b2e4a;
+  transition: background-color 0.3s;
+  transition: letter-spacing 0.3s;
+}
+.btn--red:hover {
+  letter-spacing: 1px;
+  background-color: #314DD9
+}
+.btn2 {
+  font-size: 15px;
+  display: inline-block;
+  vertical-align: top;
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: aliceblue;
+  text-transform: uppercase;
+
+}
+.btn2--black {
+  background-color: #1d1c1c;
+  transition: background-color 0.3s;
+  transition: letter-spacing 0.3s;
+}
+.btn2--black:hover {
+  letter-spacing: 1px;
+  background-color: black;
+}
+/*TABLE
+******************/
+.tables {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 30px 30px 30px rgba(0,0,0,0.15);
+}
+.table-sortable th {
+  cursor: pointer;
+}
+.tables thead th {
+  background-color: #dc3545;
+  color: #cccccc;
+  text-align: left;
+  font-weight: bold;
+
+}
+.tables thead td,
+.tables thead tr {
+  padding: 12px 15px;
+}
+.tables tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.tables tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.tables tbody tr:last-of-type {
+  border-bottom: 2px solid #2b2e4a;
+}
+.tables tbody tr.active-row{
+  font-weight: bold;
+  color: #110f0f;
+}
+.table-sortable th {
+  cursor: pointer;
+}
+
+.table-sortable .th-sort-asc::after {
+  content: "\25b4";
+}
+
+.table-sortable .th-sort-desc::after {
+  content: "\25be";
+}
+
+.table-sortable .th-sort-asc::after,
+.table-sortable .th-sort-desc::after {
+  margin-left: 5px;
+}
+
+.table-sortable .th-sort-asc,
+.table-sortable .th-sort-desc {
+  background: rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 700px) {
+  .nav__link {
+    margin-left: 25px;
+  }
+
+  table th, table td {
+    padding: 0.2rem;
+  }
+  .tables {
+    box-shadow: none;
+  }
+
+  .header {
+    width: 110%;
+  }
+  .btn {
+    padding: 5px 5px;
+  }
+  .btn2 {
+    padding: 5px 5px;
+  }
+}
+@media (max-width: 400px)  {
+  .header {
+    width: 130%;
+  }
+}

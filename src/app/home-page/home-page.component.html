@@ -1,0 +1,94 @@
+
+<div
+        *ngIf="posts$ | async as posts; else loading"
+>
+<header class="header" id="headers">
+  <div class="container">
+    <div class="header__inner">
+     <a class="inner__text" routerLink="/">G-Blog</a>
+      <div class="btns">
+        <button (click)="navlog()" class="forsign">Sign In</button>
+        <button (click)="navreg()" class="forregister">Sign Up</button>
+      </div>
+      <div class="nav" #hello>
+        <button  class="nav__link"  (click)="forscroll()">Home</button>
+        <button class="nav__link" (click)="forscrollpost()" >Posts</button>
+        <button  class="nav__link" (click)="forscrollabout()">About</button>
+      </div>
+        <div class="burger" (click)="fornav(); this.show = !this.show" >
+            <span class="burger__item"  >Menu</span>
+        </div>
+    </div>
+  </div>
+</header>
+<div class="intro" id="intro">
+  <div class="container">
+    <div class="intro__inner">
+      <div class="inner__title">Welcome To the G-Blog Family </div>
+      <div class="inner__text">Sign up to the G-blog and start posting with us</div>
+      <a href="" class="btn btn--red" (click)="createpost()">Create Posts</a>
+    </div>
+  </div>
+</div>
+
+  <div class="forbackg" id="posts">
+      <div class="container" >
+            <div class="features">
+              <div class="features__item" *ngFor="let post of posts">
+                <img src="" alt="" class="features__photo" >
+                <div class="features__new">{{post.title}}</div>
+                <div class="features__new1">{{"Post Author " + post.author}}</div>
+                <div class="features__new2">{{post.date | date:'dd.MM.yyyy'}}</div>
+                <quill-view-html [content]="post.text" class="quill"></quill-view-html>
+                <button
+                        [routerLink]="['/post', post.id]"
+                        class="foropen"
+                >Open</button>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="about" id="about" >
+        <div class="container">
+            <div class="about__inner">
+                <div class="about__block">
+                    <div class="about__title">
+                            Location
+                    </div>
+                        <address class="about__address">
+                            <p>Armenia, Yerevan </p>
+                            <p>Aram Khacatrian 29/1 </p>
+                        </address>
+                </div>
+                <div class="about__block">
+                    <div class="about__title">Share with Love</div>
+                        <div class="social">
+                            <div class="social__item">
+                                <img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-512.png" alt="" height="">
+                            </div>
+                            <div class="social__item">
+                                <img src="https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Instagram-512.png" alt="" height="">
+                            </div>
+                            <div class="social__item">
+                                <img src="https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Google-512.png" alt="" height="" class="social__icon">
+                            </div>
+                        </div>
+                </div>
+                <div class="about__block">
+                    <div class="about__title">About G-Blog</div>
+                    <div class="about__text">
+                        <p>In This Blog You can Post different topics about everything</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #loading >
+  <div class="loading" >
+    <div>
+        <img src="https://cdn4.iconfinder.com/data/icons/eon-education-i/32/book_open_novel-256.png" alt="">
+    </div>
+  </div>
+</ng-template>
