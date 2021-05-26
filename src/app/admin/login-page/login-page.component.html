@@ -1,0 +1,77 @@
+<div *ngIf="load; else loading" >
+<section>
+  <div class="container">
+    <div class="user singinBx">
+      <div class="imgBx"><img src="https://i.pinimg.com/originals/e2/9c/de/e29cdeaeb6e51c35404a38e25a04b414.jpg" alt=""></div>
+      <div class="formBx">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="logo"><a class="cyber" [href]="['/']">G-Blog</a><img src="https://i.pinimg.com/736x/c6/13/1e/c6131e0206d37d4f4146d53c6e3d16f3.jpg" alt="" class="menu"></div>
+      <h2>Sign in</h2>
+
+      <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+        {{ error }}
+      </div>
+
+      <div class="alert alert-info" *ngIf="message">
+        {{ message }}
+      </div>
+
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+      >
+        <label for="email">Email:</label>
+        <input id="email" type="email" formControlName="email" placeholder="Email" class="input">
+        <div
+          *ngIf="form.get('email').touched && form.get('email').invalid"
+          class="validation"
+        >
+          <small *ngIf="form.get('email').errors.required">
+            Write your Email
+          </small>
+          <small *ngIf="form.get('email').errors.email">
+            Write correct Email
+          </small>
+        </div>
+      </div>
+
+      <div
+        class="form-control"
+        [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+      >
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password" placeholder="Password" class="input">
+        <div
+          class="validation"
+          *ngIf="form.get('password').touched && form.get('password').invalid"
+        >
+          <small *ngIf="form.get('password').errors.required">
+            Write Password
+          </small>
+          <small *ngIf="form.get('password').errors.minlength">
+            Password must be at least
+            {{form.get('password').errors.minlength.requiredLength}}
+            Symbols. Now it's
+            {{form.get('password').errors.minlength.actualLength}}
+            Symbols.
+          </small>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="form.invalid || submitted"
+      >Sign In</button>
+      <p class="signup">Don't have an account ?<a [href]="['/admin/register']">Sign up</a></p>
+    </form>
+    </div>
+    </div>
+  </div>
+</section>
+</div>
+<ng-template #loading >
+  <div class="loading">
+    <div></div>
+  </div>
+</ng-template>
